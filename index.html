@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bridge — Budget & Receipts Portal (mockup, sample data)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --surface2:#f8fafc; --line:#e5e8ee; --line2:#d8dde6;
+  --ink:#1d2733; --muted:#64708099; --muted2:#647080; --dim:#94a0b0;
+  --teal:#0f766e; --teal-d:#115e59; --teal-soft:#ecfdf9;
+  --amber:#b45309; --amber-soft:#fff7ed; --amber-line:#fed7aa;
+  --red:#dc2626; --red-soft:#fef2f2; --green:#16a34a; --green-soft:#f0fdf4;
+  --indigo:#4338ca;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4,.brand,.kpi-v{font-family:'Lexend',sans-serif;}
+.topbar{background:var(--surface);border-bottom:1px solid var(--line2);padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Lexend';font-weight:800;font-size:17px;}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--teal-d));color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;}
+.brand small{display:block;font-family:'Inter';font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-top:2px;}
+.roleswitch{display:flex;gap:6px;background:var(--surface2);border:1px solid var(--line2);border-radius:10px;padding:4px;}
+.roleswitch button{font-family:'Lexend';font-weight:600;font-size:12.5px;border:none;background:transparent;color:var(--muted2);padding:7px 14px;border-radius:7px;cursor:pointer;}
+.roleswitch button.on{background:var(--teal);color:#fff;}
+.wrap{max-width:1080px;margin:0 auto;padding:24px;}
+.who{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
+.who .h{font-family:'Lexend';font-weight:800;font-size:22px;}
+.who .h span{color:var(--teal);}
+.areachips{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px;}
+.areachip{font-size:12px;font-weight:600;color:var(--teal-d);background:var(--teal-soft);border:1px solid #b9ece4;padding:3px 11px;border-radius:20px;}
+.sitepill{font-size:12px;color:var(--muted2);background:var(--surface2);border:1px solid var(--line2);padding:6px 12px;border-radius:8px;font-weight:600;}
+.demo{font-family:'Lexend';font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--amber);background:var(--amber-soft);border:1px solid var(--amber-line);padding:5px 11px;border-radius:20px;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:15px 17px;}
+.kpi .l{font-size:11px;color:var(--muted2);font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+.kpi .kpi-v{font-size:25px;font-weight:800;margin-top:5px;}
+.kpi .s{font-size:11.5px;color:var(--dim);margin-top:2px;}
+.kpi.warn .kpi-v{color:var(--amber);} .kpi.flag .kpi-v{color:var(--red);} .kpi.ok .kpi-v{color:var(--green);}
+.sec{font-family:'Lexend';font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted2);margin:24px 0 11px;display:flex;align-items:center;gap:8px;}
+.sec .ct{background:var(--surface2);border:1px solid var(--line2);border-radius:20px;padding:1px 9px;font-size:11px;color:var(--muted2);}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:13px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle;}
+th{background:var(--surface2);font-family:'Lexend';font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2);font-weight:700;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#fafcff;}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:7px;}
+.badge.ok{color:var(--green);background:var(--green-soft);} .badge.miss{color:var(--amber);background:var(--amber-soft);}
+.badge.flagged{color:var(--red);background:var(--red-soft);} .badge.pending{color:var(--indigo);background:#eef2ff;}
+.btn{font-family:'Lexend';font-weight:600;font-size:12px;border-radius:7px;padding:6px 11px;cursor:pointer;border:1px solid var(--line2);background:var(--surface);color:var(--ink);}
+.btn:hover{border-color:var(--teal);color:var(--teal-d);}
+.btn.primary{background:var(--teal);color:#fff;border-color:var(--teal);}
+.btn.danger{color:var(--red);border-color:#f3c7c7;} .btn.danger:hover{background:var(--red-soft);}
+.btn.sm{font-size:11px;padding:5px 9px;}
+.row-actions{display:flex;gap:6px;justify-content:flex-end;}
+.panel{display:none;background:var(--surface2);border:1px dashed var(--line2);border-radius:11px;padding:16px;margin-top:12px;}
+.panel.show{display:block;}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+.field label{font-size:11.5px;color:var(--muted2);font-weight:600;}
+.field select,.field input,.field textarea{border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font-family:'Inter';font-size:13px;color:var(--ink);background:#fff;outline:none;}
+.field select:focus,.field input:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft);}
+.drop{border:2px dashed var(--line2);border-radius:11px;padding:22px;text-align:center;color:var(--muted2);background:#fff;cursor:pointer;}
+.drop:hover{border-color:var(--teal);color:var(--teal-d);background:var(--teal-soft);}
+.drop .ic{font-size:26px;}
+.view{display:none;} .view.on{display:block;}
+.note{background:var(--amber-soft);border:1px solid var(--amber-line);border-left:3px solid var(--amber);border-radius:9px;padding:12px 15px;font-size:12.5px;color:#7c4a12;margin-top:8px;line-height:1.55;}
+.note b{color:#5b3309;}
+.info{background:var(--teal-soft);border:1px solid #b9ece4;border-left:3px solid var(--teal);border-radius:9px;padding:12px 15px;font-size:12.5px;color:#0c5750;margin-top:18px;line-height:1.55;}
+.pivot td.lbl{color:var(--muted2);} .barwrap{display:flex;align-items:center;gap:9px;} .bar{flex:1;height:7px;border-radius:5px;background:var(--surface2);overflow:hidden;} .bar>i{display:block;height:100%;background:var(--teal);} .bar>i.over{background:var(--red);}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--ink);color:#fff;font-family:'Lexend';font-weight:600;font-size:13.5px;padding:13px 22px;border-radius:11px;box-shadow:0 12px 30px rgba(0,0,0,.25);opacity:0;transition:.3s;z-index:40;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+@media(max-width:760px){
+  .wrap{padding:14px}
+  .topbar{padding:8px 14px;height:auto;gap:8px;}
+  .brand{font-size:15px;} .brand .logo{width:30px;height:30px;font-size:16px;} .brand small{font-size:9.5px;}
+  .demo{display:none;}
+  .roleswitch{flex:1;} .roleswitch button{flex:1;padding:8px 10px;font-size:12px;}
+  .who{margin-bottom:14px;} .who .h{font-size:19px;}
+  .kpis{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .kpi{padding:12px 13px;} .kpi .kpi-v{font-size:20px;} .kpi .l{font-size:10px;}
+  .sec{margin:18px 0 9px;font-size:12px;}
+  .card{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{font-size:11.8px;}
+  th,td{padding:8px 8px;}
+  /* drop the long Memo column on phones — Vendor + Amount + Receipt + Action are what matter */
+  #txntable th:nth-child(3),#txntable td:nth-child(3){display:none;}
+  .btn.sm{font-size:10.5px;padding:5px 8px;}
+  .row-actions{flex-wrap:wrap;gap:5px;}
+  .drop{padding:18px;} .drop .ic{font-size:24px;}
+  .panel{padding:14px;}
+}
+@media(max-width:420px){
+  .kpis{grid-template-columns:1fr;} .who .h{font-size:18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><div class="logo">B</div><div>The Bridge<small>Budget &amp; Receipts</small></div></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="roleswitch">
+      <button id="rs-staff" class="on" onclick="setRole('staff')">Staff view</button>
+      <button id="rs-office" onclick="setRole('office')">Office / Admin</button>
+    </div>
+    <span class="demo">● SAMPLE DATA</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ════════ STAFF VIEW ════════ -->
+  <section class="view on" id="staff">
+    <div class="who">
+      <div>
+        <div class="h">Hi, <span>Derek</span> — here's your budget</div>
+        <div class="areachips"><span class="areachip">Youth</span><span class="areachip">Men's Events</span><span class="sitepill" style="margin-left:4px;">Leadington · VISION RESOURCES</span></div>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="l">Spent (Apr)</div><div class="kpi-v">$1,082</div><div class="s">your areas</div></div>
+      <div class="kpi ok"><div class="l">Budget left</div><div class="kpi-v">$918</div><div class="s">of $2,000 monthly</div></div>
+      <div class="kpi warn"><div class="l">Missing receipts</div><div class="kpi-v">3</div><div class="s">need yours</div></div>
+      <div class="kpi flag"><div class="l">Flagged "not mine"</div><div class="kpi-v">1</div><div class="s">sent to office</div></div>
+    </div>
+
+    <div class="sec">Your transactions <span class="ct">Youth + Men's Events · April</span></div>
+    <div class="card">
+      <table id="txntable">
+        <thead><tr><th>Date</th><th>Vendor</th><th>Memo</th><th class="num">Amount</th><th>Receipt</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>04/03</td><td>Chick-fil-A</td><td>Youth Wednesday meal</td><td class="num">$142.50</td><td><span class="badge ok">✓ attached</span></td><td><div class="row-actions"><button class="btn sm danger" onclick="flagRow(this,'Chick-fil-A $142.50')">Not my area</button></div></td></tr>
+          <tr><td>04/05</td><td>Amazon</td><td>Small-group books</td><td class="num">$89.20</td><td><span class="badge miss" id="r1">⚠ missing</span></td><td><div class="row-actions"><button class="btn sm primary" onclick="uploadRow(this,'r1')">Upload</button><button class="btn sm danger" onclick="flagRow(this,'Amazon $89.20')">Not my area</button></div></td></tr>
+          <tr><td>04/08</td><td>Walmart</td><td>Game-night supplies</td><td class="num">$64.30</td><td><span class="badge miss" id="r2">⚠ missing</span></td><td><div class="row-actions"><button class="btn sm primary" onclick="uploadRow(this,'r2')">Upload</button><button class="btn sm danger" onclick="flagRow(this,'Walmart $64.30')">Not my area</button></div></td></tr>
+          <tr><td>04/12</td><td>Domino's</td><td>Men's breakfast</td><td class="num">$76.00</td><td><span class="badge ok">✓ attached</span></td><td><div class="row-actions"><button class="btn sm danger" onclick="flagRow(this,\"Domino's $76.00\")">Not my area</button></div></td></tr>
+          <tr><td>04/15</td><td>Lifeway</td><td>Spring curriculum</td><td class="num">$156.00</td><td><span class="badge miss" id="r3">⚠ missing</span></td><td><div class="row-actions"><button class="btn sm primary" onclick="uploadRow(this,'r3')">Upload</button><button class="btn sm danger" onclick="flagRow(this,'Lifeway $156.00')">Not my area</button></div></td></tr>
+          <tr><td>04/20</td><td>Home Depot</td><td>Lumber — stage set build</td><td class="num">$245.00</td><td><span class="badge ok">✓ attached</span></td><td><div class="row-actions"><button class="btn sm danger" onclick="flagRow(this,'Home Depot $245.00')">Not my area</button></div></td></tr>
+        </tbody>
+      </table>
+      <!-- flag panel -->
+      <div class="panel" id="flagpanel" style="margin:0;border-radius:0;border-left:0;border-right:0;border-bottom:0;">
+        <div style="font-family:'Lexend';font-weight:700;font-size:13px;margin-bottom:10px;">Flag for office review — <span id="flagtxn" style="color:var(--red);"></span></div>
+        <div class="field"><label>This belongs to which area instead?</label>
+          <select id="flagarea"><option>Worship</option><option>Facility</option><option>Office</option><option>Bridge Kids</option><option>First Impressions</option><option>Connection/Events</option><option>I'm not sure — let the office decide</option></select></div>
+        <div class="field"><label>Note (optional)</label><textarea rows="2" placeholder="e.g. this was lumber for the Worship stage, not Youth"></textarea></div>
+        <div style="display:flex;gap:8px;"><button class="btn primary" onclick="submitFlag()">Submit to office</button><button class="btn" onclick="document.getElementById('flagpanel').classList.remove('show')">Cancel</button></div>
+      </div>
+      <!-- upload panel -->
+      <div class="panel" id="uploadpanel" style="margin:0;border-radius:0;border-left:0;border-right:0;border-bottom:0;">
+        <div style="font-family:'Lexend';font-weight:700;font-size:13px;margin-bottom:10px;">Upload the missing receipt</div>
+        <label class="drop" style="display:block;">
+          <input type="file" accept="image/*,application/pdf" capture="environment" style="display:none" onchange="submitUpload(this)">
+          <div class="ic">📷</div><div style="margin-top:6px;font-weight:600;">Tap to photograph the receipt</div>
+          <div style="font-size:11.5px;margin-top:3px;">Opens your phone camera · or choose a JPG / PNG / PDF · attaches straight to the QuickBooks transaction</div>
+        </label>
+        <div style="margin-top:10px;"><button class="btn" onclick="document.getElementById('uploadpanel').classList.remove('show')">Cancel</button></div>
+      </div>
+    </div>
+
+    <div class="sec">Missing receipts <span class="ct">3 — the office is waiting on these</span></div>
+    <div class="card"><table><tbody>
+      <tr><td style="width:70px;">04/05</td><td>Amazon · Small-group books</td><td class="num" style="width:90px;">$89.20</td><td style="width:120px;"><button class="btn sm primary" onclick="uploadRow(this,'r1b')">Upload receipt</button></td></tr>
+      <tr><td>04/08</td><td>Walmart · Game-night supplies</td><td class="num">$64.30</td><td><button class="btn sm primary" onclick="uploadRow(this,'r2b')">Upload receipt</button></td></tr>
+      <tr><td>04/15</td><td>Lifeway · Spring curriculum</td><td class="num">$156.00</td><td><button class="btn sm primary" onclick="uploadRow(this,'r3b')">Upload receipt</button></td></tr>
+    </tbody></table></div>
+    <div class="note"><b>Why these show as missing:</b> QuickBooks has the charge but no receipt image attached to it. Snap a photo here and it attaches to that exact transaction — the office sees it clear instantly.</div>
+  </section>
+
+  <!-- ════════ OFFICE / ADMIN VIEW ════════ -->
+  <section class="view" id="office">
+    <div class="who">
+      <div><div class="h"><span>Tatar</span> · Office Admin — all areas</div>
+        <div class="areachips"><span class="sitepill">Leadington · Bonne Terre · Church</span></div></div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi flag"><div class="l">Wrong-area flags</div><div class="kpi-v">7</div><div class="s">awaiting reassign</div></div>
+      <div class="kpi warn"><div class="l">Missing receipts</div><div class="kpi-v">41</div><div class="s">org-wide</div></div>
+      <div class="kpi"><div class="l">$ unreceipted</div><div class="kpi-v">$3,860</div><div class="s">across 41 txns</div></div>
+      <div class="kpi ok"><div class="l">Cleared this week</div><div class="kpi-v">18</div><div class="s">receipts uploaded</div></div>
+    </div>
+
+    <div class="sec">Review queue — "not my area" submissions <span class="ct">7</span></div>
+    <div class="card"><table>
+      <thead><tr><th>Submitted by</th><th>Transaction</th><th>Currently in</th><th>Suggested</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Derek · Youth</td><td>Home Depot · $245.00 · "lumber, stage set"</td><td><span class="badge flagged">Youth</span></td><td>→ Worship</td><td><div class="row-actions"><button class="btn sm primary" onclick="resolve(this,'Reassigned to Worship')">Reassign</button><button class="btn sm" onclick="resolve(this,'Kept in Youth')">Keep</button></div></td></tr>
+        <tr><td>Natalie · Bridge Kids</td><td>Amazon · $58.10 · "label maker"</td><td><span class="badge flagged">Bridge Kids</span></td><td>→ Office</td><td><div class="row-actions"><button class="btn sm primary" onclick="resolve(this,'Reassigned to Office')">Reassign</button><button class="btn sm" onclick="resolve(this,'Kept')">Keep</button></div></td></tr>
+        <tr><td>Seth · First Impressions (BT)</td><td>Sam's Club · $121.40 · "coffee + cups"</td><td><span class="badge flagged">First Impressions</span></td><td>→ Coffee Bar</td><td><div class="row-actions"><button class="btn sm primary" onclick="resolve(this,'Reassigned to Coffee Bar')">Reassign</button><button class="btn sm" onclick="resolve(this,'Kept')">Keep</button></div></td></tr>
+        <tr><td>Catherine · Worship</td><td>Guitar Center · $312.00 · "cables/stands"</td><td><span class="badge flagged">Worship</span></td><td>not sure</td><td><div class="row-actions"><button class="btn sm primary" onclick="resolve(this,'Routed for review')">Review</button><button class="btn sm" onclick="resolve(this,'Kept')">Keep</button></div></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec">Missing receipts by area <span class="ct">41 org-wide</span></div>
+    <div class="card"><table>
+      <thead><tr><th>Site</th><th>Department</th><th>Area (owner)</th><th class="num">Missing</th><th class="num">$ value</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Leadington</td><td>VISION RESOURCES</td><td>Youth <span style="color:var(--dim)">· Derek</span></td><td class="num">3</td><td class="num">$309.50</td><td><button class="btn sm" onclick="toast('Reminder sent to Derek')">Remind</button></td></tr>
+        <tr><td>Leadington</td><td>VISION RESOURCES</td><td>Bridge Kids <span style="color:var(--dim)">· Natalie</span></td><td class="num">6</td><td class="num">$612.00</td><td><button class="btn sm" onclick="toast('Reminder sent to Natalie')">Remind</button></td></tr>
+        <tr><td>Leadington</td><td>OPERATIONS</td><td>Facility <span style="color:var(--dim)">· Catherine</span></td><td class="num">9</td><td class="num">$1,140.00</td><td><button class="btn sm" onclick="toast('Reminder sent to Catherine')">Remind</button></td></tr>
+        <tr><td>Bonne Terre</td><td>CONNECTION MINISTRIES</td><td>Connection/Events <span style="color:var(--dim)">· Seth</span></td><td class="num">5</td><td class="num">$498.30</td><td><button class="btn sm" onclick="toast('Reminder sent to Seth')">Remind</button></td></tr>
+        <tr><td>Church</td><td>Missions</td><td>Coffee Bar <span style="color:var(--dim)">· Natalie</span></td><td class="num">7</td><td class="num">$430.20</td><td><button class="btn sm" onclick="toast('Reminder sent to Natalie')">Remind</button></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec">Areas &amp; owners — the mapping you maintain <span class="ct">Tatar edits</span></div>
+    <div class="card"><table>
+      <thead><tr><th>Site</th><th>Department</th><th>Area (c_SoftName)</th><th>Owner</th><th class="num">QB accts</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Leadington</td><td>VISION RESOURCES</td><td>Youth</td><td class="owner">Derek</td><td class="num">7</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Leadington</td><td>VISION RESOURCES</td><td>Bridge Kids</td><td class="owner">Natalie</td><td class="num">9</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Leadington</td><td>VISION RESOURCES</td><td>Worship</td><td class="owner">Catherine</td><td class="num">6</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Leadington</td><td>OPERATIONS</td><td>Facility</td><td class="owner">Catherine</td><td class="num">11</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Leadington</td><td>OPERATIONS</td><td>Office</td><td class="owner">Tatar</td><td class="num">8</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Bonne Terre</td><td>CONNECTION MINISTRIES</td><td>Connection/Events</td><td class="owner">Seth</td><td class="num">5</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Bonne Terre</td><td>VISION RESOURCES</td><td>First Impressions</td><td class="owner">Seth</td><td class="num">4</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+        <tr><td>Church</td><td>Missions</td><td>Coffee Bar</td><td class="owner">Natalie</td><td class="num">3</td><td><button class="btn sm" onclick="editOwner(this)">Edit</button></td></tr>
+      </tbody>
+    </table>
+      <div style="padding:12px 14px;border-top:1px solid var(--line);"><button class="btn primary" onclick="toast('New area — set Site / Dept / SoftName + owner, then map its QB accounts')">+ Add area</button></div>
+    </div>
+    <div class="info">This table maps each QuickBooks account / class to a <b>Site › Department › Area</b> and assigns an <b>owner</b>. Staff see only the areas they own; the office maintains it right here — add a ministry, reassign an owner, or re-map an account, and the staff views + board pivot update to match.</div>
+
+    <div class="sec">Board view — budget vs actual <span class="ct">Site › Dept › Area</span></div>
+    <div class="card pivot"><table>
+      <thead><tr><th>Site › Department › Area</th><th class="num">Budget</th><th class="num">Actual</th><th style="width:200px;">Used</th></tr></thead>
+      <tbody>
+        <tr><td class="lbl">Leadington › VISION RESOURCES › Youth</td><td class="num">$2,000</td><td class="num">$1,082</td><td><div class="barwrap"><div class="bar"><i style="width:54%"></i></div><span style="font-size:11.5px;color:var(--muted2)">54%</span></div></td></tr>
+        <tr><td class="lbl">Leadington › VISION RESOURCES › Bridge Kids</td><td class="num">$3,500</td><td class="num">$2,910</td><td><div class="barwrap"><div class="bar"><i style="width:83%"></i></div><span style="font-size:11.5px;color:var(--muted2)">83%</span></div></td></tr>
+        <tr><td class="lbl">Leadington › OPERATIONS › Facility</td><td class="num">$6,000</td><td class="num">$6,740</td><td><div class="barwrap"><div class="bar"><i class="over" style="width:100%"></i></div><span style="font-size:11.5px;color:var(--red);font-weight:600;">112%</span></div></td></tr>
+        <tr><td class="lbl">Bonne Terre › CONNECTION MINISTRIES › Connection/Events</td><td class="num">$1,800</td><td class="num">$1,240</td><td><div class="barwrap"><div class="bar"><i style="width:69%"></i></div><span style="font-size:11.5px;color:var(--muted2)">69%</span></div></td></tr>
+      </tbody>
+    </table></div>
+    <div class="info"><b>How "missing receipt" is detected:</b> we read each expense/bill/credit-card charge from the QuickBooks API and check whether it has an <b>attachment</b> linked. No attachment on a receipt-type transaction → it lands in this list. When a staff member uploads here, the file <b>attaches back to that QuickBooks transaction</b> and the flag clears. (Donations, payroll, and journal entries are excluded — they don't need receipts.)</div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+function setRole(r){
+  document.getElementById('staff').classList.toggle('on',r==='staff');
+  document.getElementById('office').classList.toggle('on',r==='office');
+  document.getElementById('rs-staff').classList.toggle('on',r==='staff');
+  document.getElementById('rs-office').classList.toggle('on',r==='office');
+  window.scrollTo(0,0);
+}
+var tt;function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},2600);}
+function flagRow(btn,txn){document.getElementById('flagtxn').textContent=txn;document.getElementById('uploadpanel').classList.remove('show');document.getElementById('flagpanel').classList.add('show');document.getElementById('flagpanel').scrollIntoView({behavior:'smooth',block:'center'});}
+function submitFlag(){var a=document.getElementById('flagarea').value;document.getElementById('flagpanel').classList.remove('show');toast('Sent to office for review → suggested: '+a);}
+var curBadge=null;
+function uploadRow(btn,id){curBadge=id;document.getElementById('flagpanel').classList.remove('show');document.getElementById('uploadpanel').classList.add('show');document.getElementById('uploadpanel').scrollIntoView({behavior:'smooth',block:'center'});}
+function submitUpload(inp){var fn=(inp&&inp.files&&inp.files[0])?inp.files[0].name:'receipt.jpg';document.getElementById('uploadpanel').classList.remove('show');if(curBadge){var b=document.getElementById(curBadge);if(b){b.className='badge pending';b.textContent='⏳ pending review';}}toast('📷 '+fn+' · attached to the QuickBooks transaction');}
+function editOwner(btn){var cell=btn.closest('tr').querySelector('.owner');var cur=cell.textContent.trim();var names=['Derek','Natalie','Catherine','Seth','Tatar','Unassigned'];cell.innerHTML='<select style="padding:5px 8px;border:1px solid var(--line2);border-radius:6px;font-family:Inter;font-size:12.5px;">'+names.map(function(n){return '<option'+(n===cur?' selected':'')+'>'+n+'</option>';}).join('')+'</select>';btn.textContent='Save';btn.setAttribute('onclick','saveOwner(this)');}
+function saveOwner(btn){var cell=btn.closest('tr').querySelector('.owner');var v=cell.querySelector('select').value;cell.textContent=v;btn.textContent='Edit';btn.setAttribute('onclick','editOwner(this)');toast('Owner updated · '+v);}
+function resolve(btn,msg){var tr=btn.closest('tr');tr.style.opacity='.45';btn.closest('.row-actions').innerHTML='<span class="badge ok">✓ done</span>';toast(msg);}
+</script>
+</body>
+</html>
